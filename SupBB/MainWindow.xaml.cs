@@ -48,23 +48,24 @@ namespace SupBB
 
                 smtp.Credentials = new NetworkCredential(newMessage.Sender(), settings.Password());
                 smtp.EnableSsl = true;
-                smtp.Send(message);
 
-                smtp.SendCompleted += Smtp_SendCompleted;
+                try
+                {
+                    smtp.Send(message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception caught in CreateMessageWithAttachment(): {0}",
+                    ex.ToString());
+                }
             } 
             else
             {
                 MessageBox.Show("Что то пошло не так!");
             }
-            MessageBox.Show("Сообщение отправлено");
+            MessageBox.Show("Сообщение отправлено", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             Close();
         }
-
-        private void Smtp_SendCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-            MessageBox.Show("Сообщение отправлено", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information); 
-        }
-
         public bool CheckTxtBox()
         {
             if (String.IsNullOrEmpty(txtLoginSender.Text) || String.IsNullOrEmpty(txtPhoneSender.Text)
