@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SupBB
 {
@@ -33,14 +34,19 @@ namespace SupBB
                 user.CitySender = txtCitySender.Text;
                 user.StreetSender = txtStreetSender.Text;
                 newMessage.TextMessage = txtMessage.Text;
+                string oper = string.Format("Город {0}, {1}. {2}", user.CitySender, user.StreetSender , user.LoginSender);
 
-                MailAddress from = new MailAddress(newMessage.Sender(), user.LoginSender);
+
+                MailAddress from = new MailAddress(newMessage.Sender(), oper);
                 MailAddress to = new MailAddress(newMessage.Recipient()); 
 
                 MailMessage message = new MailMessage(from, to);
+                var selectedItem = cmbItem.Text.ToString();
 
-                message.Subject = newMessage.TextMessage; 
-                message.Body = string.Format("Адрес ППС - {0} {1}. Имя ПК - {2}",user.CitySender, user.StreetSender, myPC.PcName());
+
+                message.Subject = string.Format("{0}", selectedItem); 
+                     
+                message.Body = string.Format("{0}. Имя ПК - ( {1} ) Телефон -{2}.", newMessage.TextMessage, myPC.PcName(), user.PhoneSender);
                     
                 message.IsBodyHtml = true;
 
@@ -57,20 +63,18 @@ namespace SupBB
                 {
                     Console.WriteLine("Exception caught in CreateMessageWithAttachment(): {0}",
                     ex.ToString());
+                    //MessageBox.Show("Сообщение отправлено", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
                 }
+                MessageBox.Show("Сообщение отправлено", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                Close();
             } 
-            else
-            {
-                MessageBox.Show("Что то пошло не так!");
-            }
-            MessageBox.Show("Сообщение отправлено", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-            Close();
         }
         public bool CheckTxtBox()
         {
             if (String.IsNullOrEmpty(txtLoginSender.Text) || String.IsNullOrEmpty(txtPhoneSender.Text)
                 || String.IsNullOrEmpty(txtCitySender.Text) || String.IsNullOrEmpty(txtStreetSender.Text)
-                || String.IsNullOrEmpty(txtMessage.Text))
+                || String.IsNullOrEmpty(txtMessage.Text) || String.IsNullOrEmpty(cmbItem.Text))
             {
                 MessageBox.Show("Заполните поля");
                 return false;
@@ -78,6 +82,16 @@ namespace SupBB
             else
             {
                 return true;
+            }
+        }
+
+        private void txtCitySender_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            string inputSymbol = e.Text.ToString();
+
+            if (!Regex.Match(inputSymbol, @"[а-яА-Я]").Success)
+            {
+                e.Handled = true;
             }
         }
     }

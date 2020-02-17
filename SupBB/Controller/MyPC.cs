@@ -8,6 +8,8 @@ namespace SupBB.Controller
         {
             var _pcName = Environment.MachineName;
             return _pcName;
+
         }
+
     }
 }

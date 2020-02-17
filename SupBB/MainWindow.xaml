@@ -5,22 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SupBB"
         mc:Ignorable="d"
-        Title="Создание заявки в отдел технической поддержки" Height="405.967" Width="807.705">
+        Title="Создание заявки в отдел технической поддержки" Height="376.967" Width="703.705">
     <Grid>
         <TextBox x:Name="txtLoginSender" HorizontalAlignment="Left" Height="23" Margin="206,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lblLoginSender" Content="Введите Ваш логин в APK :" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Height="23" Width="158" FontSize="11"/>
         <Label x:Name="lblCitySender" Content="Введите Ваш город :" HorizontalAlignment="Left" Margin="346,43,0,0" VerticalAlignment="Top" Height="23" Width="158" FontSize="11"/>
-        <TextBox x:Name="txtCitySender" HorizontalAlignment="Left" Height="23" Margin="542,43,-32,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCitySender" PreviewTextInput="txtCitySender_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="484,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lblStreetSender" Content="Введите Вашу улицу :" HorizontalAlignment="Left" Margin="346,71,0,0" VerticalAlignment="Top" Height="23" Width="158" FontSize="11"/>
-        <TextBox x:Name="txtStreetSender" HorizontalAlignment="Left" Height="23" Margin="542,71,-32,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtStreetSender" HorizontalAlignment="Left" Height="23" Margin="484,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lblPhoneSender" Content="Введите Ваш контактный номер :" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Height="23" Width="185" FontSize="11"/>
         <TextBox x:Name="txtPhoneSender" HorizontalAlignment="Left" Height="23" Margin="206,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lblComment" Content="Опишите Вашу проблему :" HorizontalAlignment="Left" Margin="260,110,0,0" VerticalAlignment="Top" Height="23" Width="152" FontSize="11"/>
-        <TextBox x:Name="txtMessage" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="91" Margin="10,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="652"/>
+        <Label x:Name="lblComment" Content="Опишите Вашу проблему :" HorizontalAlignment="Left" Margin="233,127,0,0" VerticalAlignment="Top" Height="23" Width="152" FontSize="11"/>
+        <TextBox x:Name="txtMessage" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="91" Margin="9,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="595"/>
         <Label Content="Ваши данные :" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Height="23"/>
         <Label Content="Данные ППС :" HorizontalAlignment="Left" Margin="457,10,0,0" VerticalAlignment="Top" Height="23"/>
-        <Button x:Name="bntSend" Content="Отправить" HorizontalAlignment="Left" Margin="10,246,0,0" VerticalAlignment="Top" Width="137" Click="bntSend_Click"/>
-        <Button x:Name="btnExit" Content="Закрыть" HorizontalAlignment="Left" Margin="152,246,0,0" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.053,0.45" Click="btnExit_Click"/>
+        <Button x:Name="bntSend" Content="Отправить" HorizontalAlignment="Left" Margin="9,288,0,0" VerticalAlignment="Top" Width="137" Click="bntSend_Click"/>
+        <Button x:Name="btnExit" Content="Закрыть" HorizontalAlignment="Left" Margin="151,288,0,0" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.053,0.45" Click="btnExit_Click"/>
+        <ComboBox x:Name ="cmbItem" HorizontalAlignment="Left" Margin="206,100,0,0" VerticalAlignment="Top" Width="262">
+            <TextBlock>Проблема с принтером</TextBlock>
+            <TextBlock>Проблема с компьютером оператора</TextBlock>
+            <TextBlock>Проблема с компьютером БИ</TextBlock>
+            <TextBlock>Проблема с монитором</TextBlock>
+            <TextBlock>Проблема с телевизором</TextBlock>
+        </ComboBox>
+        <Label x:Name="lblProblem" Content="Выберите тему обращения :" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Height="23" Width="185" FontSize="11"/>
 
     </Grid>
 </Window>
