@@ -6,6 +6,10 @@
         public string CitySender { get; set; }
         public string StreetSender { get; set; }
         public string PhoneSender { get; set; }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
 
     }
 }

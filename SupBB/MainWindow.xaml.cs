@@ -63,8 +63,6 @@ namespace SupBB
                 {
                     Console.WriteLine("Exception caught in CreateMessageWithAttachment(): {0}",
                     ex.ToString());
-                    //MessageBox.Show("Сообщение отправлено", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                    
                 }
                 MessageBox.Show("Сообщение отправлено", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();

@@ -21,7 +21,7 @@
         <Label Content="Данные ППС :" HorizontalAlignment="Left" Margin="457,10,0,0" VerticalAlignment="Top" Height="23"/>
         <Button x:Name="bntSend" Content="Отправить" HorizontalAlignment="Left" Margin="9,288,0,0" VerticalAlignment="Top" Width="137" Click="bntSend_Click"/>
         <Button x:Name="btnExit" Content="Закрыть" HorizontalAlignment="Left" Margin="151,288,0,0" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.053,0.45" Click="btnExit_Click"/>
-        <ComboBox x:Name ="cmbItem" HorizontalAlignment="Left" Margin="206,100,0,0" VerticalAlignment="Top" Width="262">
+        <ComboBox x:Name ="cmbItem" Focusable="True" HorizontalAlignment="Left" Margin="206,100,0,0" VerticalAlignment="Top" Width="262">
             <TextBlock>Проблема с принтером</TextBlock>
             <TextBlock>Проблема с компьютером оператора</TextBlock>
             <TextBlock>Проблема с компьютером БИ</TextBlock>
